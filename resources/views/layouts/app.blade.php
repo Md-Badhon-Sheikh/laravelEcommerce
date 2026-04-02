@@ -486,12 +486,12 @@
         </div>
       </div>
     </div>
-  </header>
- 
-  @yeti('content')
+</header>
+
+@yield('content')
 
 
-  <hr class="mt-5 text-secondary" />
+<hr class="mt-5 text-secondary" />
   <footer class="footer footer_type_2">
     <div class="footer-middle container">
       <div class="row row-cols-lg-5 row-cols-2">
