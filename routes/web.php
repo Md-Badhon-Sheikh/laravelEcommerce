@@ -18,6 +18,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::middleware(['auth', 'AdminMiddleware'])->group(function () {
+Route::middleware(['auth', 'AuthAdmin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
