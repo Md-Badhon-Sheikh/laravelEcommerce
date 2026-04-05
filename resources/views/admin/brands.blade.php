@@ -32,16 +32,20 @@
                           </div>
                       </form>
                   </div>
-                  <a class="tf-button style-1 w208" href="add-brand.html"><i
+                  <a class="tf-button style-1 w208" href="{{ route('admin.add.brand') }}"><i
                           class="icon-plus"></i>Add new</a>
               </div>
               <div class="wg-table table-all-user">
                   <div class="table-responsive">
+                      @if(Session::has('status'))
+                        <p class="text-success">{{ Session::get('status') }}</p>
+                      @endif
                       <table class="table table-striped table-bordered">
                           <thead>
                               <tr>
                                   <th>#</th>
                                   <th>Name</th>
+                                  <th>Image</th>
                                   <th>Slug</th>
                                   <th>Products</th>
                                   <th>Action</th>
@@ -51,14 +55,14 @@
                             @foreach ($brands as $brand)
                               <tr>
                                   <td>{{ $loop->iteration }}</td>
+                                  <td>{{ $brand->name }}</td>
                                   <td class="pname">
                                       <div class="image">
                                           <img src="{{ asset('images/brands') }}/{{$brand->image}}" alt="{{$brand->name}}" class="image">
                                       </div>
-                                      <div class="name">
-                                          <a href="#" class="body-title-2">{{ $brand->name }}</a>
-                                      </div>
+                                      
                                   </td>
+
                                   <td>{{ $brand->slug }}</td>
                                   <td><a href="#" target="_blank">0</a></td>
                                   <td>
