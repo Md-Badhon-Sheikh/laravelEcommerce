@@ -61,7 +61,7 @@ class AdminController extends Controller
         $brand = Brand::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique:brands,slug',
+            'slug' => 'required|unique:brands,slug,' . $request->id,
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
