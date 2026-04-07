@@ -47,7 +47,7 @@ class AdminController extends Controller
         $brand->image = $file_name;
         $brand->save();
 
-        return redirect()->route('admin.brands')->with('success', 'Brand added successfully.');
+        return redirect()->route('admin.brands')->with('status', 'Brand added successfully.');
     }
 
     public function brand_edit($id)
@@ -80,7 +80,7 @@ class AdminController extends Controller
         
         $brand->save();
 
-        return redirect()->route('admin.brands')->with('success', 'Brand updated successfully.');
+        return redirect()->route('admin.brands')->with('status', 'Brand updated successfully.');
     }
 
     public function GenerateBrandThumbnailsImage($image, $imageName)

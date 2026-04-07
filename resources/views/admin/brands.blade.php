@@ -37,9 +37,7 @@
               </div>
               <div class="wg-table table-all-user">
                   <div class="table-responsive">
-                      @if(Session::has('status'))
-                        <p class="text-success">{{ Session::get('status') }}</p>
-                      @endif
+                     
                       <table class="table table-striped table-bordered">
                           <thead>
                               <tr>
@@ -92,4 +90,37 @@
           </div>
       </div>
   </div>
+
 @endsection
+
+
+@push('scripts')
+<style>
+    #toast-container * {
+        font-size: 15px;
+    }
+</style>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "timeOut": "4000",
+         "toastClass": "toastr-custom",
+        
+    }
+
+    @if(Session::has('status'))
+        toastr.success("{{ Session::get('status') }}");
+    @endif
+
+    @if(Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+    @endif
+
+    @if(Session::has('warning'))
+        toastr.warning("{{ Session::get('warning') }}");
+    @endif
+</script>
+
+@endpush
+
+

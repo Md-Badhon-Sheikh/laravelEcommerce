@@ -23,6 +23,9 @@
     <link rel="apple-touch-icon-precomposed" href="{{ asset('images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+    <!-- In <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     @stack('styles')
 </head>
 
@@ -474,6 +477,8 @@
     <script src="{{ asset('js/sweetalert.min.js') }}"></script>
     <script src="{{ asset('js/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <!-- Before </body> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         (function($) {
 
