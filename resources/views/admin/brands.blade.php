@@ -58,7 +58,7 @@
                                   <td>{{ $brand->name }}</td>
                                   <td class="pname">
                                       <div class="image">
-                                          <img src="{{ asset('images/brands') }}/{{$brand->image}}" alt="{{$brand->name}}" class="image">
+                                          <img src="{{ asset('uploads/brands') }}/{{$brand->image}}" alt="{{$brand->name}}" class="image">
                                       </div>
                                       
                                   </td>
@@ -67,7 +67,7 @@
                                   <td><a href="#" target="_blank">0</a></td>
                                   <td>
                                       <div class="list-icon-function">
-                                          <a href="#">
+                                          <a href="{{ route('admin.edit.brand',['id' => $brand->id]) }}">
                                               <div class="item edit">
                                                   <i class="icon-edit-3"></i>
                                               </div>
