@@ -70,11 +70,11 @@
                                                   <i class="icon-edit-3"></i>
                                               </div>
                                           </a>
-                                          <form action="#" method="POST">
-                                              <div class="item text-danger delete">
-                                                  <i class="icon-trash-2"></i>
-                                              </div>
-                                          </form>
+                                          <form>
+                                            <div class="item text-danger delete" data-id="{{ $brand->id }}">
+                                                <i class="icon-trash-2"></i>
+                                            </div>
+                                        </form>
                                       </div>
                                   </td>
                               </tr>
@@ -95,17 +95,58 @@
 
 
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     #toast-container * {
-        font-size: 15px;
+        font-size: 14px;
     }
 </style>
 <script>
+    
+    $(function() {
+        $('.delete').on('click', function(e) {
+            e.preventDefault();
+            var brandId = $(this).data('id');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/admin/brands/delete/' + brandId,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                // Remove row from table without page reload
+                                $('[data-id="' + brandId + '"]').closest('tr').fadeOut(500, function() {
+                                    $(this).remove();
+                                });
+                                toastr.success(response.message);
+                            }
+                        },
+                        error: function() {
+                            toastr.error('Something went wrong!');
+                        }
+                    });
+                }
+            });
+        });
+});
+
     toastr.options = {
         "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
         "timeOut": "4000",
-         "toastClass": "toastr-custom",
-        
     }
 
     @if(Session::has('status'))
@@ -120,7 +161,4 @@
         toastr.warning("{{ Session::get('warning') }}");
     @endif
 </script>
-
 @endpush
-
-
