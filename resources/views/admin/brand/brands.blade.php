@@ -6,7 +6,7 @@
               <h3>Brands</h3>
               <ul class="breadcrumbs flex items-center flex-wrap justify-start gap10">
                   <li>
-                      <a href="{{route('admin.index')}}">
+                      <a href="{{route('index')}}">
                           <div class="text-tiny">Dashboard</div>
                       </a>
                   </li>
@@ -32,7 +32,7 @@
                           </div>
                       </form>
                   </div>
-                  <a class="tf-button style-1 w208" href="{{ route('admin.add.brand') }}"><i
+                  <a class="tf-button style-1 w208" href="{{ route('add.brand') }}"><i
                           class="icon-plus"></i>Add new</a>
               </div>
               <div class="wg-table table-all-user">
@@ -65,7 +65,7 @@
                                   <td><a href="#" target="_blank">0</a></td>
                                   <td>
                                       <div class="list-icon-function">
-                                          <a href="{{ route('admin.edit.brand',['id' => $brand->id]) }}">
+                                          <a href="{{ route('edit.brand',['id' => $brand->id]) }}">
                                               <div class="item edit">
                                                   <i class="icon-edit-3"></i>
                                               </div>
@@ -98,7 +98,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <style>
     #toast-container * {
-        font-size: 14px;
+        font-size: 12px;
     }
 </style>
 <script>

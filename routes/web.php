@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Middleware\AuthAdmin;
 
 
@@ -19,11 +20,16 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth', 'AuthAdmin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/brands', [AdminController::class, 'brands'])->name('admin.brands');
-    Route::get('/admin/brands/add', [AdminController::class, 'add_brand'])->name('admin.add.brand');
-    Route::post('/admin/brands/store', [AdminController::class, 'store_brand'])->name('admin.store.brand');
-    Route::get('/admin/brands/edit/{id}', [AdminController::class, 'brand_edit'])->name('admin.edit.brand');
-    Route::post('/admin/brands/update/{id}', [AdminController::class, 'brand_update'])->name('admin.update.brand');
-    Route::delete('/admin/brands/delete/{id}', [AdminController::class, 'delete_brand'])->name('admin.delete.brand');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+
+        // BrandController routes
+        Route::get('/brands', [BrandController::class, 'brands'])->name('brands');
+        Route::get('/brands/add', [BrandController::class, 'add_brand'])->name('add.brand');
+        Route::post('/brands/store', [BrandController::class, 'store_brand'])->name('store.brand');
+        Route::get('/brands/edit/{id}', [BrandController::class, 'brand_edit'])->name('edit.brand');
+        Route::post('/brands/update/{id}', [BrandController::class, 'brand_update'])->name('update.brand');
+        Route::delete('/brands/delete/{id}', [BrandController::class, 'delete_brand'])->name('delete.brand');
+
+    }); 
 });
