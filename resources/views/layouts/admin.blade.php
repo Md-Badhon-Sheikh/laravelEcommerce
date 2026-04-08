@@ -76,7 +76,7 @@
                                             </a>
                                         </li>
                                         <li class="sub-menu-item">
-                                            <a href="products.html" class="">
+                                            <a href="{{route('products')}}" class="">
                                                 <div class="text">Products</div>
                                             </a>
                                         </li>
