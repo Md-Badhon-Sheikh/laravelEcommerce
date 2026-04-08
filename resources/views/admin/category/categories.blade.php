@@ -106,7 +106,7 @@
     $(function() {
         $('.delete').on('click', function(e) {
             e.preventDefault();
-            var brandId = $(this).data('id');
+            var categoryId = $(this).data('id');
 
             Swal.fire({
                 title: 'Are you sure?',
@@ -119,7 +119,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/brands/delete/' + brandId,
+                        url: '/admin/categories/delete/' + categoryId,
                         type: 'DELETE',
                         data: {
                             _token: '{{ csrf_token() }}'
@@ -127,7 +127,7 @@
                         success: function(response) {
                             if (response.status === 'success') {
                                 // Remove row from table without page reload
-                                $('[data-id="' + brandId + '"]').closest('tr').fadeOut(500, function() {
+                                $('[data-id="' + categoryId + '"]').closest('tr').fadeOut(500, function() {
                                     $(this).remove();
                                 });
                                 toastr.success(response.message);

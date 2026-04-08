@@ -95,4 +95,18 @@ class CategoryController extends Controller
 
         return redirect()->route('categories')->with('status', 'Category updated successfully.');
     }
+
+    public function delete_category($id)
+    {
+        $category = Category::findOrFail($id);
+        if (File::exists(public_path('uploads/categories/' . $category->image))) {
+            File::delete(public_path('uploads/categories/' . $category->image));
+        }
+        $category->delete();
+        return response()->json([
+                'status' => 'success',
+                'message' => 'Category deleted successfully.'
+            ]);
+    }
+
 }
