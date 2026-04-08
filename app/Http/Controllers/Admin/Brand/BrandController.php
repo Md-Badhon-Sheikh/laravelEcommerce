@@ -35,11 +35,16 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->name = $request->name;
         $brand->slug = Str::slug($request->name);
-        $image = $request->file('image');
-        $file_extention = $request->file('image')->extension();
-        $file_name = Carbon::now()->timestamp . '.' . $file_extention;
-        $this->GenerateBrandThumbnailsImage($image, $file_name);
-        $brand->image = $file_name;
+       if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $file_extention = $image->extension();
+            $file_name = Carbon::now()->timestamp . '.' . $file_extention;
+
+            $this->GenerateBrandThumbnailsImage($image, $file_name);
+
+            $brand->image = $file_name;
+        }
+
         $brand->save();
 
         return redirect()->route('brands')->with('status', 'Brand added successfully.');

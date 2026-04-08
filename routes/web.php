@@ -34,5 +34,10 @@ Route::middleware(['auth', 'AuthAdmin'])->group(function () {
 
         // CategoryController routes
         Route::get('/categories', [CategoryController::class, 'categories'])->name('categories');
+        Route::get('/categories/add', [CategoryController::class, 'add_category'])->name('add.category');
+        Route::post('/categories/store', [CategoryController::class, 'store_category'])->name('store.category');
+        Route::get('/categories/edit/{id}', [CategoryController::class, 'category_edit'])->name('edit.category');
+        Route::post('/categories/update/{id}', [CategoryController::class, 'category_update'])->name('update.category');
+        Route::delete('/categories/delete/{id}', [CategoryController::class, 'delete_category'])->name('delete.category');
     }); 
 });
