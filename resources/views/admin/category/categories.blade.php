@@ -41,12 +41,12 @@
                       <table class="table table-striped table-bordered">
                           <thead>
                               <tr>
-                                  <th class="width-50">#</th>
+                                  <th style="width: 50px; text-align: center;"> # </th>
                                   <th>Name</th>
                                   <th>Image</th>
                                   <th>Slug</th>
                                   <th>Products</th>
-                                  <th>Action</th>
+                                  <th style="width: 300px;;">Action</th>
                               </tr>
                           </thead>
                           <tbody>
