@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Brand\BrandController;
+use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Middleware\AuthAdmin;
 
 
