@@ -44,5 +44,6 @@ Route::middleware(['auth', 'AuthAdmin'])->group(function () {
 
         // ProductController routes
         Route::get('/products', [ProductController::class, 'products'])->name('products');
+        Route::get('/products/add', [ProductController::class, 'add_product'])->name('add.product');
     }); 
 });
