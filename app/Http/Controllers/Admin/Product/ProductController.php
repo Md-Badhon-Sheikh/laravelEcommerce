@@ -8,6 +8,9 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -79,7 +82,7 @@ class ProductController extends Controller
                 if($gcheck)
                 {
                     $gfileName = $current_timestamp . "_" . $counter . "." . $gextension;
-                    $this->GenerateProductThumbnailImage($file,$gfileName);
+                    $this->GenerateProductThumbnailsImage($file,$gfileName);
                     array_push($gallery_arr,$gfileName);
                     $counter = $counter + 1;
                 }
@@ -94,7 +97,7 @@ class ProductController extends Controller
 
     public function GenerateProductThumbnailsImage($image, $imageName)
     {
-        $destinationPathThumbnail = public_path('uploads/products/thumbnails');
+        $destinationPathThumbnail = public_path('uploads/products/thumbnail');
         $destinationPath = public_path('uploads/products');
         $img = Image::read($image->path());
 

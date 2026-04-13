@@ -31,7 +31,6 @@
     <!-- form-add-product -->
     <form class="tf-section-2 form-add-product" method="POST" enctype="multipart/form-data" action="{{ route('store.product') }}">
         @csrf
-        <input type="hidden" name="_token" value="8LNRTO4LPXHvbK2vgRcXqMeLgqtqNGjzWSNru7Xx" autocomplete="off">
         <div class="wg-box">
             <fieldset class="name">
                 <div class="body-title mb-10">Product name <span class="tf-color-1">*</span>
