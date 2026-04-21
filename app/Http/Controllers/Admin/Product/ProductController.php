@@ -95,6 +95,14 @@ class ProductController extends Controller
         return redirect()->route('products')->with('status', 'Product added successfully.');
     }
 
+    public function edit_product($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::select('id', 'name')->orderBy('name')->get();
+        $brands = Brand::select('id', 'name')->orderBy('name')->get();
+        return view('admin.product.edit-product', compact('product', 'categories', 'brands'));
+    }
+
     public function GenerateProductThumbnailsImage($image, $imageName)
     {
         $destinationPathThumbnail = public_path('uploads/products/thumbnail');
