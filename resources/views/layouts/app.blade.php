@@ -256,7 +256,7 @@
     }
 
     .logo__image {
-      max-width: 220px;
+      max-width: 150px;
     }
   </style>
   <div class="header-mobile header_sticky">
@@ -270,7 +270,7 @@
 
       <div class="logo">
         <a href="{{ route('home.index') }}">
-          <img src="{{asset('assets/images/logo.png')}}" alt="Uomo" class="logo__image d-block" />
+          <img src="{{asset('assets/images/xerqo_logo.png')}}" alt="Uomo" class="logo__image d-block" />
         </a>
       </div>
 
@@ -390,7 +390,7 @@
       <div class="header-desk header-desk_type_1">
         <div class="logo">
           <a href="{{ route('home.index') }}">
-            <img src="{{asset('assets/images/logo.png')}}" alt="Uomo" class="logo__image d-block" />
+            <img src="{{asset('assets/images/xerqo_logo.png')}}" alt="Uomo" class="logo__image d-block w-85px" />
           </a>
         </div>
 
