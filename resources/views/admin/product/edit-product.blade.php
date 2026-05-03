@@ -105,8 +105,8 @@
                 </div>
                 <div class="upload-image flex-grow">
                     <div class="item" id="imgpreview" style="display:none">
-                        <img src="../../../localhost_8000/images/upload/upload-1.png"
-                            class="effect8" alt="">
+                        <img src="{{ $product->image ? asset('uploads/products/' . $product->image) : '' }}"
+                            class="effect8" alt="{{$product->name}}">
                     </div>
                     <div id="upload-file" class="item up-load">
                         <label class="uploadfile" for="myFile">
@@ -123,9 +123,13 @@
             <fieldset>
                 <div class="body-title mb-10">Upload Gallery Images</div>
                 <div class="upload-image mb-16">
-                    <!-- <div class="item">
-                            <img src="images/upload/upload-1.png" alt="">
-                        </div>                                                 -->
+                  @if($product->images)
+                    @foreach(explode(',', $product->images) as $img)
+                    <div class="item">
+                            <img src="{{ asset('uploads/products/') }}/{{ trim($img) }}" alt="">
+                    </div> 
+                    @endforeach
+                  @endif     
                     <div id="galUpload" class="item up-load">
                         <label class="uploadfile" for="gFile">
                             <span class="icon">
@@ -186,8 +190,8 @@
                     <div class="body-title mb-10">Stock</div>
                     <div class="select mb-10">
                         <select class="" name="stock_status">
-                            <option value="instock">InStock</option>
-                            <option value="outofstock">Out of Stock</option>
+                            <option value="instock" {{ $product->stock_status == 'instock' ? 'selected' : '' }}>InStock</option>
+                            <option value="outofstock" {{ $product->stock_status == 'outofstock' ? 'selected' : '' }}>Out of Stock</option>
                         </select>
                     </div>
                 </fieldset>
@@ -198,8 +202,8 @@
                     <div class="body-title mb-10">Featured</div>
                     <div class="select mb-10">
                         <select class="" name="featured">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value="0" {{ $product->featured == 0 ? 'selected' : '' }}>No</option>
+                            <option value="1" {{ $product->featured == 1 ? 'selected' : '' }}>Yes</option>
                         </select>
                     </div>
                 </fieldset>
