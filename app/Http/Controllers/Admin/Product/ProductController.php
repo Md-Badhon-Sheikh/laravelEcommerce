@@ -178,9 +178,10 @@ class ProductController extends Controller
                 }
             }
             $gallery_images = implode(',',$gallery_arr);
+             $product->images = $gallery_images;
         }
 
-        $product->images = $gallery_images;
+       
         $product->save();
         return redirect()->route('products')->with('status', 'Product updated successfully.');
     }

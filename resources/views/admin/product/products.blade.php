@@ -106,5 +106,27 @@
       </div>
   </div>
 
+@push('scripts')
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "4000",
+    };
+
+    @if(Session::has('status'))
+        toastr.success({!! json_encode(Session::get('status')) !!});
+    @endif
+
+    @if(Session::has('error'))
+        toastr.error({!! json_encode(Session::get('error')) !!});
+    @endif
+
+    @if(Session::has('warning'))
+        toastr.warning({!! json_encode(Session::get('warning')) !!});
+    @endif
+</script>
+@endpush
 
 @endsection
