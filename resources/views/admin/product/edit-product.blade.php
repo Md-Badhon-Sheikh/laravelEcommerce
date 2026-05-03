@@ -104,7 +104,7 @@
                 <div class="body-title">Upload images <span class="tf-color-1">*</span>
                 </div>
                 <div class="upload-image flex-grow">
-                    <div class="item" id="imgpreview" style="display:none">
+                    <div class="item" id="imgpreview">
                         <img src="{{ $product->image ? asset('uploads/products/' . $product->image) : '' }}"
                             class="effect8" alt="{{$product->name}}">
                     </div>
@@ -125,7 +125,7 @@
                 <div class="upload-image mb-16">
                   @if($product->images)
                     @foreach(explode(',', $product->images) as $img)
-                    <div class="item">
+                    <div class="item g-items">
                             <img src="{{ asset('uploads/products/') }}/{{ trim($img) }}" alt="">
                     </div> 
                     @endforeach
