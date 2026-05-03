@@ -80,12 +80,11 @@
                                               <i class="icon-eye"></i>
                                           </div>
                                       </a>
-                                      <a href="#">
+                                      <a href="{{ route('edit.product', $product->id) }}">
                                           <div class="item edit">
                                               <i class="icon-edit-3"></i>
                                           </div>
-                                      </a>
-                                      <form action="#" method="POST">
+                                      </a> 
                                           <div class="item text-danger delete">
                                               <i class="icon-trash-2"></i>
                                           </div>
